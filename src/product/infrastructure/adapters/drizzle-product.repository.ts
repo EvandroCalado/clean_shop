@@ -76,7 +76,7 @@ export class DrizzleProductRepository implements ProductRepositoty {
       id: product.id.getValue(),
       name: product.name,
       description: product.description,
-      priceAmount: product.price.getAmount(),
+      priceAmount: product.price.toCents(),
       priceCurrency: product.price.getCurrency(),
       sku: product.sku.getValue(),
       stock: product.stock,
