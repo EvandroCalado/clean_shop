@@ -1,6 +1,6 @@
 export enum ApplicationExceptionCode {
   VALIDATION_ERROR = 'VALIDATION_ERROR',
-  NOT_FUND = 'NOT_FUND',
+  NOT_FOUND = 'NOT_FOUND',
   CONFLICT = 'CONFLICT',
 }
 

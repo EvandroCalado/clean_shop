@@ -12,7 +12,7 @@ import {
 
 const CODE_TO_HTTP: Record<ApplicationExceptionCode, HttpStatus> = {
   [ApplicationExceptionCode.VALIDATION_ERROR]: HttpStatus.BAD_REQUEST,
-  [ApplicationExceptionCode.NOT_FUND]: HttpStatus.NOT_FOUND,
+  [ApplicationExceptionCode.NOT_FOUND]: HttpStatus.NOT_FOUND,
   [ApplicationExceptionCode.CONFLICT]: HttpStatus.CONFLICT,
 };
 
