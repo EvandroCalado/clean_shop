@@ -123,7 +123,11 @@ O repositório inclui o SQL inicial em:
 drizzle/0000_tidy_tyger_tiger.sql
 ```
 
-Aplique esse arquivo no PostgreSQL antes de usar a API de produtos.
+Aplique a migration no PostgreSQL antes de usar a API de produtos.
+
+```bash
+npx drizzle-kit migrate
+```
 
 ### 5. Inicie a aplicação
 
@@ -302,7 +306,11 @@ The repository includes the initial SQL at:
 drizzle/0000_tidy_tyger_tiger.sql
 ```
 
-Apply this file to PostgreSQL before using the products API.
+Apply migration to PostgreSQL before using the products API.
+
+```bash
+npx drizzle-kit migrate
+```
 
 ### 5. Start the application
 
