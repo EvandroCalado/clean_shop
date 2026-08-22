@@ -110,10 +110,9 @@ docker compose up -d
 Exemplo:
 
 ```env
-PORT=3000
-POSTGRES_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/clean_shop
 MONGODB_URI=mongodb://localhost:27017
 MONGODB_NAME=clean_shop
+POSTGRES_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/clean_shop
 ```
 
 ### 4. Aplique o schema do banco
@@ -290,10 +289,9 @@ docker compose up -d
 Example:
 
 ```env
-PORT=3000
-POSTGRES_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/clean_shop
 MONGODB_URI=mongodb://localhost:27017
 MONGODB_NAME=clean_shop
+POSTGRES_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/clean_shop
 ```
 
 ### 4. Apply the database schema
