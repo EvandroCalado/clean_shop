@@ -4,7 +4,7 @@ import { Product } from 'src/product/domain/entities/product.entity';
 import { Inject } from '@nestjs/common';
 import {
   PRODUCT_REPOSITORY,
-  ProductRepositoty,
+  ProductRepository,
 } from '../../ports/product-repository.port';
 import { ProductId } from 'src/product/domain/value-object/product-id.vo';
 import {
@@ -19,7 +19,7 @@ export class GetProductHandler implements IQueryHandler<
 > {
   constructor(
     @Inject(PRODUCT_REPOSITORY)
-    private readonly productRepository: ProductRepositoty,
+    private readonly productRepository: ProductRepository,
   ) {}
 
   async execute(query: GetProductQuery): Promise<Product> {

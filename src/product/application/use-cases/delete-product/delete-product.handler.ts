@@ -3,7 +3,7 @@ import { DeleteProductCommand } from './delete-product.command';
 import { Inject } from '@nestjs/common';
 import {
   PRODUCT_REPOSITORY,
-  ProductRepositoty,
+  ProductRepository,
 } from '../../ports/product-repository.port';
 import { ProductId } from 'src/product/domain/value-object/product-id.vo';
 import {
@@ -15,7 +15,7 @@ import {
 export class DeleteProductHandler implements ICommandHandler<DeleteProductCommand> {
   constructor(
     @Inject(PRODUCT_REPOSITORY)
-    private readonly productRepository: ProductRepositoty,
+    private readonly productRepository: ProductRepository,
   ) {}
 
   async execute(command: DeleteProductCommand): Promise<void> {

@@ -3,7 +3,7 @@ import { CreateProductCommand } from './create-product.command';
 import { Inject } from '@nestjs/common';
 import {
   PRODUCT_REPOSITORY,
-  ProductRepositoty,
+  ProductRepository,
 } from '../../ports/product-repository.port';
 import { Product } from 'src/product/domain/entities/product.entity';
 import { Sku } from 'src/product/domain/value-object/sku.vo';
@@ -16,7 +16,7 @@ import {
 export class CreateProductHandler implements ICommandHandler<CreateProductCommand> {
   constructor(
     @Inject(PRODUCT_REPOSITORY)
-    private readonly productRepository: ProductRepositoty,
+    private readonly productRepository: ProductRepository,
   ) {}
 
   async execute(command: CreateProductCommand): Promise<void> {

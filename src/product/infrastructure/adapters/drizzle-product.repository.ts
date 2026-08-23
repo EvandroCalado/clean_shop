@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { and, eq, gte, lte, SQL } from 'drizzle-orm';
 import {
   ProductFilters,
-  ProductRepositoty,
+  ProductRepository,
 } from 'src/product/application/ports/product-repository.port';
 import { Product } from 'src/product/domain/entities/product.entity';
 import { ProductId } from 'src/product/domain/value-object/product-id.vo';
@@ -15,7 +15,7 @@ import {
 import { products } from 'src/shared/infrastructure/database/postgres/schema';
 
 @Injectable()
-export class DrizzleProductRepository implements ProductRepositoty {
+export class DrizzleProductRepository implements ProductRepository {
   constructor(@Inject(DRIZZLE) private readonly db: DrizzleDB) {}
 
   async save(procuct: Product): Promise<void> {
