@@ -1,5 +1,5 @@
-import { CustomerId } from 'src/customers/value-objects/customer-id.vo';
-import { Email } from 'src/customers/value-objects/email.vo';
+import { CustomerId } from 'src/customers/domain/value-objects/customer-id.vo';
+import { Email } from 'src/customers/domain/value-objects/email.vo';
 import { AggregateRoot } from 'src/shared/domain/aggregate-root';
 
 interface CustomerProps {
