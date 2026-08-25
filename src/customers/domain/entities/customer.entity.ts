@@ -14,14 +14,14 @@ interface CustomerProps {
 }
 
 export class Customer extends AggregateRoot {
-  public readonly _id: CustomerId;
-  public readonly _email: Email;
-  public readonly _firstName: string;
-  public readonly _lastName: string;
-  public readonly _isActive: boolean;
-  public readonly _phone: string | null;
-  public readonly _createdAt: Date;
-  public readonly _updatedAt: Date;
+  private readonly _id: CustomerId;
+  private _email: Email;
+  private _firstName: string;
+  private _lastName: string;
+  private _isActive: boolean;
+  private _phone: string | null;
+  private readonly _createdAt: Date;
+  private _updatedAt: Date;
 
   private constructor(props: CustomerProps) {
     super();
