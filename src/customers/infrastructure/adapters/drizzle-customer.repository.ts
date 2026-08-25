@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { eq } from 'drizzle-orm';
 import { CustomerRepositoryPort } from 'src/customers/application/ports/customer.repository';
 import { Customer } from 'src/customers/domain/entities/customer.entity';
 import { CustomerId } from 'src/customers/domain/value-objects/customer-id.vo';
@@ -8,6 +9,8 @@ import {
   DrizzleDB,
 } from 'src/shared/infrastructure/database/postgres/drizzle.provider';
 import { customers } from 'src/shared/infrastructure/database/postgres/schema';
+
+type CustomerRow = typeof customers.$inferSelect;
 
 @Injectable()
 export class DrizzleCustomerRepository implements CustomerRepositoryPort {
@@ -35,20 +38,36 @@ export class DrizzleCustomerRepository implements CustomerRepositoryPort {
       });
   }
 
-  findById(id: CustomerId): Promise<Customer | null> {
-    throw new Error('Method not implemented.');
+  async findById(id: CustomerId): Promise<Customer | null> {
+    const rows = await this.db
+      .select()
+      .from(customers)
+      .where(eq(customers.id, id.getValue()));
+
+    if (rows.length === 0) return null;
+
+    return DrizzleCustomerRepository.toDomain(rows[0]);
   }
 
-  findByEmail(email: Email): Promise<Customer | null> {
-    throw new Error('Method not implemented.');
+  async findByEmail(email: Email): Promise<Customer | null> {
+    const rows = await this.db
+      .select()
+      .from(customers)
+      .where(eq(customers.email, email.getValue()));
+
+    if (rows.length === 0) return null;
+
+    return DrizzleCustomerRepository.toDomain(rows[0]);
   }
 
-  findAll(): Promise<Customer[]> {
-    throw new Error('Method not implemented.');
+  async findAll(): Promise<Customer[]> {
+    const rows = await this.db.select().from(customers);
+
+    return rows.map((row) => DrizzleCustomerRepository.toDomain(row));
   }
 
-  delete(id: CustomerId): Promise<void> {
-    throw new Error('Method not implemented.');
+  async delete(id: CustomerId): Promise<void> {
+    await this.db.delete(customers).where(eq(customers.id, id.getValue()));
   }
 
   private static toPersistence(
@@ -64,5 +83,18 @@ export class DrizzleCustomerRepository implements CustomerRepositoryPort {
       createdAt: customer.getCreatedAt(),
       updatedAt: customer.getUpdatedAt(),
     };
+  }
+
+  private static toDomain(row: CustomerRow) {
+    return Customer.reconstitute({
+      id: new CustomerId(row.id),
+      email: Email.create(row.email),
+      firstName: row.firstName,
+      lastName: row.lastName,
+      phone: row.phone,
+      isActive: row.isActive,
+      createdAt: row.createdAt,
+      updatedAt: row.updatedAt,
+    });
   }
 }
