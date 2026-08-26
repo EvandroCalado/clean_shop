@@ -4,7 +4,7 @@ import { MongoModule } from './shared/infrastructure/database/mongodb/mongo.modu
 import { DrizzleModule } from './shared/infrastructure/database/postgres/drizzle.module';
 import { CqrsModule } from '@nestjs/cqrs';
 import { ProductModule } from './product/product.module';
-import { CustomerModule } from './customers/customer.mocule';
+import { CustomerModule } from './customers/customer.module';
 
 @Module({
   imports: [
