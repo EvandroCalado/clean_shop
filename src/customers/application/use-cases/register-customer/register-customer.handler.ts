@@ -4,7 +4,7 @@ import { Inject } from '@nestjs/common';
 import {
   CUSTOMER_REPOSITORY,
   CustomerRepositoryPort,
-} from '../../ports/customer.repository';
+} from '../../ports/customer-repository.port';
 import { Email } from 'src/customers/domain/value-objects/email.vo';
 import {
   ApplicationException,

@@ -4,7 +4,7 @@ import { Customer } from 'src/customers/domain/entities/customer.entity';
 import {
   CUSTOMER_REPOSITORY,
   CustomerRepositoryPort,
-} from '../../ports/customer.repository';
+} from '../../ports/customer-repository.port';
 import { Inject } from '@nestjs/common';
 
 @QueryHandler(ListCustomersQuery)
