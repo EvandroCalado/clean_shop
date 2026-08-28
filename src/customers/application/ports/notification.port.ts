@@ -1,11 +1,11 @@
 export const NOTIFICATION_SERVICE = Symbol('NOTIFICATION_SERVICE');
 
 export interface Notification {
-  recipient: string;
+  recipientId: string;
   subject: string;
   message: string;
 }
 
 export interface NotificationPort {
-  sendNotification(notification: Notification): void;
+  sendNotification(notification: Notification): Promise<void>;
 }
