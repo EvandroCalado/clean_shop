@@ -49,7 +49,7 @@ export class NodemailerEmailAdapter implements NotificationPort {
       from: this.from,
       to: customer.getEmail().toString(),
       subject: notification.subject,
-      html: notification.message,
+      html: `<p>${notification.message}</p>`,
     });
 
     this.logger.log(`Email sent to ${customer.getEmail().getValue()}`);
